@@ -4,8 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" conten="width=device-width", initial-scale="1">
         <style>
+            @media (min-wdith: 600px) {
+                    #bottomright {
+                        display: inline;
+                    }
+                    body {
+                        background-color: greenyellow;
+                    }
+                }
             body {
                 background-color: darkmagenta;
+                cursor: wait;
             }
             #bookthaiamgonnaread {
                 position: absolute;
@@ -24,7 +33,7 @@
                 z-index: 1004;
             }
             #atec {
-                transition: font-size 3s ease-in;
+                transition: font-size 2s ease-in-out;
             }
             #atec:hover {
                 font-size: 150px;
@@ -46,7 +55,7 @@
             #tree {
                 position: fixed;
                 bottom: -36px;
-                right: -24px;
+                right: 36px;
                 height: 80vh;
                 width: 1080px;
                 opacity: .8;
@@ -80,17 +89,26 @@
                 text-align: left;
                 z-index: 1000;
             }
+            #noise {
+                position: fixed;
+                height: 80vh;
+                z-index: 150;
+                mix-blend-mode: hard-light;
+            }
             #goldfish {
                 position: relative;
                 top: 0px;
                 right: 0vw;
                 height: 150vh;
                 opacity: 1;
+                mix-blend-mode: normal;
                 border-radius: 50px 15px 5px 30px;
-                transition: opacity 1s ease-in
+                transition: opacity 1s ease-in-out;
+                z-index: 100;
             }
             #goldfish:hover {
-                opacity: .6;
+                mix-blend-mode: difference;
+                opacity: 0.4;
             }
             #scarcity:link {
                 color: darkblue;
@@ -106,8 +124,11 @@
                 letter-spacing: 5px;
             }
             .song {
+                position: fixed;
                 color: hotpink;
+                bottom: 0vh;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                z-index: 200;
                 }
             #redd {
                 color: crimson;
@@ -117,6 +138,49 @@
             }
             #rid {
                 color: gold;
+            }
+            .wikipedia {
+                color: #F26A4B;
+                position: fixed;
+                width: 20vw;
+                right: 0vw;
+                top: 0vh;
+                z-index: 10000;
+            }
+            #title {
+                color: #71CED9;
+            }
+            #summary {
+                color: #71CED9;
+            }
+            #review {
+                color: #71CED9;
+            }
+            #time {
+                position: fixed;
+                top: 35vh;
+                left: 5px;
+                color: aliceblue;
+                font-size: 60px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                z-index: 10000;
+                mix-blend-mode: overlay;
+            }
+            #random {
+                color: #71CED9;
+                cursor: pointer;
+            }
+            #bottomright {
+                position: fixed;
+                background-color: gold;
+                width: 9vw;
+                min-width: 90px;
+                max-width: 300px;
+                height: 9vh;
+                bottom: 3vh;
+                right: 3vw;
+                mix-blend-mode: overlay;
+                z-index: 10001;
             }
         </style>
         <title>
@@ -128,12 +192,40 @@
         <div id="bookthaiamgonnaread"><span id="atec"><b>At the Existentialist Café:</b></span> Freedom, Being, and Apricot Cocktails <!--[Sarah Bakewell]--> </div>
         <img id="sunlight" src="sunlight.png">
         <img id="tree" src="trees.png">
+        <img id="noise" src="digitalnoise.png">
         <img id="goldfish" src="goldfish.png"/>
         <video controls id="donutdynamite" src="donutdynamite.mp4"></video>
         <div id="anotherbook"><b>At the Esistentialist Café: Freedom, Being, and Apricot Cocktails</b> is a book that I really want to read. But I cannot start reading it now because I haven't finish <a id="scarcity" href="web2/scarcity.html"><b>this book</b></a> that I'm currently reading.</div>
-        <div class="song" id="title">Water Color</div>
-        <div id="favorite" class="song">Butterfly</div>
         <div class="song" id="album"><span id="redd">Redd:</span> Wheein stated that the meaning of the album is "<span id="tidy">'to tidy up'</span> and <span id="rid">'to get rid of,'</span> <br/> meaning to get out of false tastes and paint...honest colors.</div>
+        <div class="wikipedia" id="description">
+            <br/>
+            <h3><span id="title">At the Existentialist Café</span></h3>
+            At the Existentialist Café: Freedom, Being, and Apricot Cocktails is a 2016 book written by Sarah Bakewell that covers the philosophy and history of the 20th century movement existentialism. 
+            The book provides an account of the modern day existentialists who came into their own before and during the Second World War. 
+            The book discusses the ideas of the phenomenologist Edmund Husserl, and how his teaching influenced the rise of <span id="random">existentialism</span> through the likes of Martin Heidegger, Jean Paul Sartre, Simone De Beauvoir, who are the main protagonists of the book. 
+            The title refers to an incident in which Sartre's close friend and fellow philosopher Raymond Aron startled him when they were in a cafe, by pointing to the glass in front of him and stating, "You can make a philosophy out of this cocktail."
+            <br/>
+            <h3><span id="summary">Summary</span></h3>
+            Bakewell structures At the Existentialist Café by focusing each chapter on a particular philosopher or period within the existentialist movement, starting by introducing the early existentialists Kierkegaard, Nietzsche, Dostoevsky and Kafka, 
+            and then moving on to the lives and philosophies of Heidegger, Husserl, Sartre, Beauvoir, Camus, Karl Jaspers, and Merleau-Ponty.
+            <br/>
+            <h3><span id="review">Reviewers Say ..</span></h3>
+            “It's not often that you miss your bus stop because you're so engrossed in reading a book about existentialism, but I did exactly that while immersed in Sarah Bakewell's 'At the Existentialist Cafe'.” (Katy Guest, <i>The Independent</i>).
+            <br/><br/>
+            “At the Existentialist Café takes us back to…when philosophers and philosophy itself were sexy, glamorous, outrageous; 
+            when sensuality and erudition were entwined… Vivid, humorous anecdotes are interwoven with a lucid and unpatronising exposition of their complex philosophy… Tender, incisive and fair.” (Jane O'Grady, <i>Daily Telegraph</i>)
+            <br/><br/>
+            “Both warm and intellectually rigorous … Perhaps the aphorism that best captures the book is one of Bakewell's own: 'Thinking should be generous and have a good appetite.'” (Julian Baggini, <i>Financial Times</i>)
+            <br/>
+        </div>
+        <div id="time">What Time Is It Now?</div>
+        <div id="bottomright"></div>
+        <script src="index.js"></script>
     </body>
 </html>
-    
+
+
+    <!-- TEXT CITED
+        https://en.wikipedia.org/wiki/At_the_Existentialist_Caf%C3%A9
+        https://sarahbakewell.com/books-3/at-the-existentialist-cafe-2/
+    -->
