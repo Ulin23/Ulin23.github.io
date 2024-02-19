@@ -14,6 +14,7 @@
                 }
                 body {
                     background-color: darkslateblue;
+                    cursor: help;
                 }
                 #bookthatiamreading {
                     position: relative;
@@ -22,45 +23,56 @@
                     text-shadow: 1px 3px 1px white;
                     border: 6px solid black;
                     width: 600px;
-                    left: 300px;
-                    top: 100px;
+                    left: 460px;
+                    top: 120px;
                     font-size: 80px;
                     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
                     text-align: right;
                     z-index: 100;
                 }
                 #flamingo {
-                    position: fixed;
-                    top: 0px;
+                    position: absolute;
+                    cursor: wait;
+                    bottom: 25vh;
                     right: 0px;
-                    height: 300px;
-                    opacity: .6;
+                    opacity: 1;
+                    height: 40vh;
                     border-radius: 50px 15px 5px 100px;
-                    z-index: 10;
-                    transition: opacity 1s ease-in
+                    mix-blend-mode: exclusion;
+                    z-index: 1000;
+                    transition: height 1s ease-in-out;
                 }
                 #flamingo:hover {
-                    opacity: 1.0;
+                    height: 60vh;
                 }
                 #crocodile {
                     position: fixed;
-                    top: 0px;
+                    cursor: wait;
+                    top: 0vh;
                     left: 0px;
                     height: 230px;
-                    opacity: .6;
+                    opacity: 1;
                     border-radius: 15px 50px 30px 5px;
+                    mix-blend-mode: exclusion;
+                    z-index: 10;
                     transition: opacity 1s ease-in
                 }
                 #crocodile:hover {
-                    opacity: 1.0;
+                    mix-blend-mode: normal;
                 }
                 #underneath {
                     position: fixed;
+                    cursor: wait;
                     width: 60vw;
                     top: 30vh;
+                    opacity: 1;
                     right: 0vw;
                     border-radius: 10px 10px 10px 10px;
+                    transition: opacity 3s ease-in-out;
                     z-index: 10;
+                }
+                #underneath:hover {
+                    opacity: 0;
                 }
                 #eiatitle {
                     position: relative;
@@ -74,22 +86,28 @@
                     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
                     text-align: left;
                     transition: width 2s ease-in;
+                    z-index: 10;
                 }
                 #eiatitle:hover {
                     width: 10vh;
                 }
+                .autoscroll {
+                    position: fixed;
+                    overflow-x: scroll;
+                    white-space: nowrap;
+                }
                 #beyondthebrush {
-                    position: relative;
+                    position: fixed;
                     color: gold;
                     background-color: darkorchid;
                     text-shadow: 1px 2px 1px white;
                     border: 5px solid black;
-                    width: 1000px;
-                    top: 20vh;
+                    width: 87vw;
+                    bottom: 23vh;
                     font-size: 30px;
                     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
                     text-align: center;
-                    z-index: 20;
+                    z-index: 120;
                 }
                 #btb:link {
                     color:cyan;
@@ -106,11 +124,31 @@
                 #btb:active {
                     color: deeppink;
                 }
-                .song {
+                .wikipedia {
+                    position: absolute;
+                    background-image: linear-gradient(transparent, #A55FA1, #50474F);
                     color: hotpink;
+                    top: 0px;
+                    z-index: 0;
+                }
+                #introduction {
+                    color: #15FA28;
+                }
+                #partone {
+                    color: #15FA28;
+                }
+                #parttwo {
+                    color: #15FA28;
+                }
+                #partthree {
+                    color: #15FA28;
+                }
+                #conclusion {
+                    color: #15FA28;
                 }
                 #scarcity {
                     font-size: 80px;
+                    cursor: wait;
                     transition: font-size 1s ease-in;
                 }
                 #scarcity:hover {
@@ -130,14 +168,54 @@
                 }
                 #cafe {
                     position: fixed;
-                    color: hotpink;
+                    color: #99004d;
                     background-color: #71CED9;
-                    opacity: 1;
+                    opacity: 0.6;
                     top: 80vh;
                     text-shadow: -1px 2px 1px #496B73;
                     font-size: 40px;
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                     text-align: left;
+                    transition: width 2s ease-in;
+                    z-index: 10;
+                }
+                #cafe:hover {
+                    width: 20vh;
+                    color: chartreuse;
+                    letter-spacing: 5px;
+                    opacity: 1;
+                }
+                #random1 {
+                    color: #15FA28;
+                    cursor: pointer;
+                }
+                #random2 {
+                    color: #15FA28;
+                    cursor: pointer;
+                }
+                #random3 {
+                    color: #15FA28;
+                    cursor: pointer;
+                }
+                #bottomright {
+                position: fixed;
+                background-color: gold;
+                width: 9vw;
+                min-width: 90px;
+                max-width: 300px;
+                height: 9vh;
+                bottom: 3vh;
+                right: 3vw;
+                mix-blend-mode: overlay;
+                z-index: 10001;
+                }
+                #digitalnoise2 {
+                    position: fixed;
+                    mix-blend-mode: soft-light;
+                    top: 0vh;
+                    left: -1vw;
+                    height: 110vh;
+                    z-index: 0;
                 }
             </style>
             <title>
@@ -147,17 +225,87 @@
         </head>
         <body>
             <video controls id="underneath" src="underneath-mv.mp4" type="video/mp4"></video>
-            <img alt="This is a photo of a flamingo. It's a digital painting with purple and black graident background." id="flamingo" src="flamingo.jpg"/>
+            <img alt="This is a painting of a flamingo. It's a digital painting with purple and black graident background." id="flamingo" src="flamingo.jpg"/>
             <img alt="This is a painting of a crocodile. It's very colorful. In total, it has 8 different colors." id="crocodile" src="crocodile.jpg"/>
             <div id="bookthatiamreading"><span id="scarcity"><b>Scarcity:</b></span> Why Having Too Little Means So Much</div>
             <a href="https://myhero.com/empowerment-in-action"><img src="empowermentinaction.png" width="400"></a>
+            <img id="digitalnoise2" src="digitalnoise2.png"/>
             <a href="https://myhero.com/empowerment-in-action"><div id="eiatitle">Empowerment In Action: The Eco Spanish School Story</div></a>
-            <div id="beyondthebrush"> There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.</div>
+            <div class=autoscroll id="beyondthebrush"> 
+                There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.
+                There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.
+                There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.
+                There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.
+                There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.
+                There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.
+                There's also another 3-min mini-doc my crew filmed in Guatemala. It's called <a id="btb" href="https://myhero.com/beyond-the-brush"><b><i>Beyond The Brush</i></b> </a>.
+            </div>
             <a id="cafe" href="../index.html"><b>At the Existentialist Café</b></a>
-            <div class="song" id="title">Water Color</div>
-            <div id="favorite" class="song">Butterfly</div>
-            <div class="song" id="album">Redd</div>
+            <div class="wikipedia" id="description">
+                <br/>
+                Scarcity: Why Having Too Little Means So Much is a 2013 book by behavioural economist Sendhil Mullainathan and psychologist Eldar Shafir. 
+                The authors discuss the role of scarcity in creating, perpetuating, and alleviating poverty. 
+                The book also proposes several ideas for how individuals and groups of people can handle scarcity to achieve success and satisfaction.
+                <br/>
+                <h3><span id="introduction">Introduction</span></h3>
+                The book begins with Sendhil's account of his daily life, particularly his feelings of being overworked. 
+                He discusses a framework for dealing with existing obligations, while managing new requests and opportunities.
+                <br/><br/>
+                The authors introduce two important concepts: time and money. Managing one's time and money requires constant vigilance, and one's failure to manage that process often results in missed deadlines and overdue bills. 
+                The authors define scarcity as the feeling someone has when they have less of a resource than they perceive they need. They explain that scarcity forms a common chord across all of society's major problems. 
+                They emphasize that scarcity is hardly transient, but instead a concept that constantly absorbs people and has profound effects on human behavior, emotions, and thinking.
+                <br/><br/>
+                The authors also disclose that their decision to write and publish Scarcity originated from an opportunity several years earlier to write a single chapter in another book about the lives of low-income Americans.
+                <br/>
+                <h3><span id="partone">Part One: The Scarcity Mindset: Focusing and Tunneling</span></h3>
+                Part One begins with the aspects and role of scarcity in human life. Scarcity affects the functioning of the brain at both a conscious and subconscious level, and has a large impact on the way one behaves. 
+                The authors suggest that scarcity has a tendency to push us into a state of tunneling: a focus primarily on the scarcity of a resource, and a resulting neglect of everything else “outside” the tunnel. 
+                When in a state of tunneling, one automatically reverts to the immediate scarcity and concern at hand, which often is to one's detriment. 
+                The underlying mechanisms that contribute to tunneling are discussed, such as goal inhibition: focusing on immediate goals (concerns) at the expense of considering how to achieve long-term goals. 
+                The authors utilize the term tunneling tax to describe the cost of the things one has forgone in order to satisfy tunneling. Usually the effects of tunneling are dire, and result in long-term consequences.
+                <br/><br/>
+                However, scarcity doesn't only produce negative effects: it can also lead to a focus dividend, a situation in which someone experiences an increase in productivity as a result of being so acutely focused on a single pursuit. 
+                Thus, scarcity has both positive and negative effects, depending on whether it causes an individual to neglect important factors in their life such as housing, insurance, or other fundamental needs or to achieve goals efficiently.
+                <br/><br/>
+                Scarcity also takes a toll on <span id="random1">bandwidth</span>, the cognitive space to think and process problems and come up with solutions. 
+                A lack of bandwidth inhibits the most necessary functions and capacities for everyday life such as fluid intelligence and executive control. 
+                Its effect on human bandwidth highlights the impact of scarcity on the way people behave, think, and make decisions. Ultimately, left unchecked, scarcity can make life a lot harder and can amount to a serious burden.
+                <br/>
+                <h3><span id="parttwo">Part Two: Scarcity Creates Scarcity</span></h3>
+                Scarcity functions as a cycle and there are various ways in which individuals enter, get trapped in, and exit the cycle.
+                <br/><br/>
+                Slack, the leftover resources (money, time, etc.) available to an individual for expenses that may arise, is the most important contributing factor to the scarcity cycle. 
+                Individuals with slack and those without it are impacted in very different ways. For low-income individuals, each dollar spent has a greater impact on their budgets and is therefore worth more. 
+                For this reason, low-income individuals pay greater attention to and seek out specific prices and discounts and more frequently try to assess the opportunity costs of transactions they engage in. 
+                However, with fewer resources, low income individuals experience juggling: the complex mechanism in which individuals patch crises as they arise by constantly shifting their resources according to what is needed most imminently. 
+                Juggling further cements low-income individuals' economic status and their place in the scarcity cycle.
+                <br/><br/>
+                Low-income individuals frequently enter into the scarcity cycle because of poor planning for the future. 
+                Tunneling and decreased bandwidth causes individuals to focus on urgent tasks, needing attention with a time constraint, rather than important tasks, needing attention but without a <span id="random2">time constraint</span>. 
+                Urgent tasks cause many to use quick fixes, like loans, which have significant consequences. 
+                Without planning, and only addressing urgent tasks, low income individuals are ill-equipped to handle shocks, extreme events that require more slack than available and enter the scarcity cycle.
+                <br/>
+                <h3><span id="partthree">Part Three: Designing for Scarcity</span></h3>
+                The authors suggest that programs for low-income earners could be improved to make them more effective for the groups they serve. 
+                For example, low-income citizens often juggle many different obligations and experience tunneling into other actions, like helping their children or addressing financial problems. 
+                The authors uses the example of cockpit improvements made by Alphonse Chapanis, to suggest that making small fixes to programs could better serve participants. 
+                The authors mention a training program designed to help to low-income earners, who the authors point out are often juggling different tasks and are not consistently able to attend the trainings at the same weekly time. 
+                The authors recommend that simply offering a secondary meeting time, where the content of the missed meeting is taught, allows participants to remain involved and decreases the likelihood of participant attrition from missing sessions.
+                <br/><br/>
+                Some believe welfare causes laziness, but many people rely on welfare to live. In fact, many welfare programs have strict limits designed to encourage unemployed individuals to return to paid employment. 
+                Time scarcity causes a deadline, causing program recipients to prioritize searching for and securing a new source of employment. 
+                The authors argue that an abundance of time leads to people becoming unmotivated to secure another job and remaining unemployed. 
+                Forcing things into the tunnel is among the most effective methods of keeping people focused on the task at hand.
+                <br/>
+                <h3><span id="conclusion">Conclusion</span></h3>
+                Scarcity affects all aspects of life. It causes people to focus and shuffle resources to concentrate on and address urgent tasks. 
+                Bandwidth helps to mitigate the effects of scarcity, because it causes planning for the future and investments in activities and resources that will be beneficial in the future. 
+                Scarcity achieves maximum impact when a deadline approaches and people feel pressured to get work done. In contrast, abundance of slack and resources decrease individual drive to complete tasks and maintain bandwidth. 
+                Avoiding <span id="random3">tunneling</span>, paying attention to bandwidth and planning for the future are the best ways to counteract the effects of scarcity.
+                <br/><br/>
+            </div>
             <div id="bottomright"></div>
+            <script src="scarcity.js"></script>
         </body>
     </html>
 
@@ -167,4 +315,7 @@
         https://www.freepik.com/premium-photo/closeup-pink-flamingo-bird-portrait-pink-flamingo-digital-art-style-illustration-painting_35545372.htm
         https://fineartamerica.com/featured/crocodile-smile-bob-weer.html
         https://www.veryicon.com/icons/holiday/love-is-in-the-web-valentine/kiss-lips.html
+    -->
+    <!-- TEXT CITED
+        https://en.wikipedia.org/wiki/Scarcity:_Why_Having_Too_Little_Means_So_Much
     -->
